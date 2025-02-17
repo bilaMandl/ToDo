@@ -19,7 +19,8 @@ export const HomePage = () => {
                     <Typography variant="h6" color="textSecondary" paragraph>
                         Discover amazing content and enjoy the best experience with us.
                     </Typography>
-                    <Button variant="contained" color="primary" size="large">
+
+                    <Button variant="contained" component={Link} to="/regis" color="primary" size="large">
                         Get Started
                     </Button>
                 </Box>
