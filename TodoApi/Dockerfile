@@ -20,7 +20,7 @@ COPY ["TodoApi.csproj", "./"]
 RUN dotnet restore "TodoApi.csproj"
 
 # Copy the rest of the application code
-COPY . .
+COPY . /app
 
 # Build the application
 WORKDIR "/src/TodoApi"
