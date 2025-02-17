@@ -16,7 +16,7 @@ ARG configuration=Release
 WORKDIR /src
 
 # Copy project file and restore dependencies
-COPY ["TodoApi.csproj", "./"]
+COPY ["TodoApi/TodoApi.csproj", "./"]
 RUN dotnet restore "TodoApi.csproj"
 
 # Copy the rest of the application code
