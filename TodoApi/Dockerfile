@@ -17,7 +17,7 @@ WORKDIR /src
 
 # Copy project file and restore dependencies
 COPY ["TodoApi/TodoApi.csproj", "./"]
-RUN dotnet restore "TodoApi.csproj"
+RUN dotnet restore "TodoApi/TodoApi.csproj"
 
 # Copy the rest of the application code
 COPY . .
