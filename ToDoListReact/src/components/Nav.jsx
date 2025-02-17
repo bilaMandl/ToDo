@@ -1,19 +1,20 @@
 import { Link } from "react-router-dom"
-import Container from "@mui/material/Container";
+// import Container from "@mui/material/Container";
+import { AppBar, Box, Button, Toolbar } from "@mui/material";
 
 
 export const Nav = () => {
     return <>
-            <nav className="navbar navbar-inverse" style={{ background: "linear-gradient(to right, peachpuff,  #0000ff75)"}}>
-                <div className="container-fluid">
-                    <ul className="nav navbar-nav navbar-right">
-                        <li><Link to={'home'} style={{ color: "black" }}>דף הבית</Link></li>
-                    </ul>
-                    <ul className="nav navbar-nav ">
-                        <li><Link to={'log'} style={{ color: "black" }}>התחברות</Link></li>
-                        <li><Link to={'regis'} style={{ color: "black" }}>הרשמה</Link></li>
-                    </ul>
-                </div>
-            </nav>
+            <AppBar position="fixed" sx={{ background: "linear-gradient(to right, peachpuff, #0000ff75)" }}>
+                <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+                    <Box>
+                        <Button AppBarcolor="inherit" component={Link} to="/home">דף הבית</Button>
+                    </Box>
+                    <Box>
+                        <Button color="inherit" component={Link} to="/log">התחברות</Button>
+                        <Button color="inherit" component={Link} to="/regis">הרשמה</Button>
+                    </Box>
+                </Toolbar>
+            </AppBar>
     </>
 }

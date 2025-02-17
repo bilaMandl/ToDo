@@ -57,8 +57,6 @@ C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\TodoApi\bin\Debug\net8.0\
 C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\bin\Debug\net8.0\appsettings.json
 C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\bin\Debug\net8.0\my-app\package.json
-C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\bin\Debug\net8.0\ToDoListReact\package-lock.json
-C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\bin\Debug\net8.0\ToDoListReact\package.json
 C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\bin\Debug\net8.0\TodoApi.staticwebassets.endpoints.json
 C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\bin\Debug\net8.0\TodoApi.exe
 C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\bin\Debug\net8.0\TodoApi.deps.json
@@ -110,3 +108,4 @@ C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\obj\Debug\ne
 C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\obj\Debug\net8.0\TodoApi.pdb
 C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\obj\Debug\net8.0\TodoApi.genruntimeconfig.cache
 C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\obj\Debug\net8.0\ref\TodoApi.dll
+C:\Users\ME\Desktop\בלי תכנות\פרקטיקוד\help\TodoApi\obj\Debug\net8.0\TodoApi.sourcelink.json
