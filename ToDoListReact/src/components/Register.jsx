@@ -2,8 +2,6 @@ import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -45,10 +43,10 @@ export const Register = () => {
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main", width: 56, height: 56 }}>
+        <Avatar sx={{ m: 1, bgcolor: "linear-gradient(to right, peachpuff, #0000ff75)", width: 56, height: 56 }}>
           <LockOutlinedIcon fontSize="large" />
         </Avatar>
-        <Typography component="h1" variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
+        <Typography component="h1" variant="h4" sx={{ fontWeight: "bold", mb: 2, color: "primary.main" }}>
           הרשמה
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ width: "100%" }}>
@@ -62,6 +60,7 @@ export const Register = () => {
             autoComplete="userName"
             autoFocus
             onChange={(event) => setUserName(event.target.value)}
+            sx={{ "& .MuiInputLabel-root": { color: "primary.main" }, "& .MuiInputBase-root": { color: "primary.main" } }}
           />
           <TextField
             margin="normal"
@@ -73,6 +72,7 @@ export const Register = () => {
             id="password"
             autoComplete="current-password"
             onChange={(event) => setPassword(event.target.value)}
+            sx={{ "& .MuiInputLabel-root": { color: "primary.main" }, "& .MuiInputBase-root": { color: "primary.main" } }}
           />
           <Button
             type="submit"
@@ -84,15 +84,16 @@ export const Register = () => {
               py: 1.5,
               fontSize: "1.1rem",
               fontWeight: "bold",
-              bgcolor: "primary.main",
-              "&:hover": { bgcolor: "primary.dark" },
+              background: "linear-gradient(to right, peachpuff, #0000ff75)", // כפתור עם גרדיאנט
+              color: "white", // טקסט לבן בכפתור
+              "&:hover": { background: "linear-gradient(to right, #0000ff75, peachpuff)" }, // שינוי צבע ב-hover
             }}
           >
             הרשמה
           </Button>
           <Grid container justifyContent="center">
             <Grid item>
-              <Link href="/log" variant="body2" sx={{ fontSize: "1rem" }}>
+              <Link href="/log" variant="body2" sx={{ fontSize: "1rem", color: "primary.main" }}>
                 יש לך כבר חשבון? להתחברות
               </Link>
             </Grid>
@@ -100,6 +101,5 @@ export const Register = () => {
         </Box>
       </Box>
     </Container>
-
   );
 }
