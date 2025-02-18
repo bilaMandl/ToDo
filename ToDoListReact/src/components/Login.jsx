@@ -14,7 +14,7 @@ import Service from "../Service";
 import { useState } from "react";
 import Container from "@mui/material/Container";
 
-export const Login=()=> {
+export const Login = () => {
   const [userName, setUserName] = useState("userName");
   const [password, setPassword] = useState("123456");
 
@@ -27,22 +27,31 @@ export const Login=()=> {
   };
 
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="sm">
       <Box
         sx={{
-          marginTop: 8,
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "100%",
+          maxWidth: 400,
+          padding: 4,
+          boxShadow: 3,
+          borderRadius: 3,
+          bgcolor: "white",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main", width: 56, height: 56 }}>
+          <LockOutlinedIcon fontSize="large" />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
           התחברות
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ width: "100%" }}>
           <TextField
             margin="normal"
             required
@@ -52,7 +61,7 @@ export const Login=()=> {
             name="userName"
             autoComplete="userName"
             autoFocus
-            helperText={"שם משתמש ברירת מחדל: userName"}
+            helperText="שם משתמש ברירת מחדל: userName"
             onChange={(event) => setUserName(event.target.value)}
           />
           <TextField
@@ -64,25 +73,29 @@ export const Login=()=> {
             type="password"
             id="password"
             autoComplete="current-password"
-            helperText={"סיסמה ברירת מחדל: 123456"}
+            helperText="סיסמה ברירת מחדל: 123456"
             onChange={(event) => setPassword(event.target.value)}
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="זכור אותי"
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{
+              mt: 3,
+              mb: 2,
+              py: 1.5,
+              fontSize: "1.1rem",
+              fontWeight: "bold",
+              bgcolor: "primary.main",
+              "&:hover": { bgcolor: "primary.dark" },
+            }}
           >
             התחברות
           </Button>
-          <Grid container>
+          <Grid container justifyContent="center">
             <Grid item>
-              <Link href="/register" variant="body2">
-                {"אין לך עדין חשבון? להרשמה"}
+              <Link href="/regis" variant="body2" sx={{ fontSize: "1rem" }}>
+                אין לך עדיין חשבון? להרשמה
               </Link>
             </Grid>
           </Grid>

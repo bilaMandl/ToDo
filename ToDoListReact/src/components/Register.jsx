@@ -27,22 +27,31 @@ export const Register = () => {
   };
 
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="sm">
       <Box
         sx={{
-          marginTop: 8,
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "100%",
+          maxWidth: 400,
+          padding: 4,
+          boxShadow: 3,
+          borderRadius: 3,
+          bgcolor: "white",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main", width: 56, height: 56 }}>
+          <LockOutlinedIcon fontSize="large" />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
           הרשמה
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ width: "100%" }}>
           <TextField
             margin="normal"
             required
@@ -65,27 +74,32 @@ export const Register = () => {
             autoComplete="current-password"
             onChange={(event) => setPassword(event.target.value)}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="זכור אותי"
-          />
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{
+              mt: 3,
+              mb: 2,
+              py: 1.5,
+              fontSize: "1.1rem",
+              fontWeight: "bold",
+              bgcolor: "primary.main",
+              "&:hover": { bgcolor: "primary.dark" },
+            }}
           >
             הרשמה
           </Button>
-          <Grid container>
+          <Grid container justifyContent="center">
             <Grid item>
-              <Link href="/login" variant="body2">
-                {"יש לך כבר חשבון? להתחברות"}
+              <Link href="/log" variant="body2" sx={{ fontSize: "1rem" }}>
+                יש לך כבר חשבון? להתחברות
               </Link>
             </Grid>
           </Grid>
         </Box>
       </Box>
     </Container>
+
   );
 }
