@@ -13,13 +13,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 var _configuration = builder.Configuration;
+//connect to DB on cloud
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings.ToDoDB");
+builder.Services.AddDbContext<ToDoDbContext>(options =>
+    options.UseMySql(connectionString,
+    new MySqlServerVersion(new Version(8, 0, 40))));
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-
-// הוספת קונטקסט של MySQL
-builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB"),
-    new MySqlServerVersion(new Version(8, 0, 40)))); // עדכון לגרסה
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
