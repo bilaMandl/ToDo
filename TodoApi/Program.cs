@@ -13,17 +13,20 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 var _configuration = builder.Configuration;
+
 //connect to DB on cloud
-var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings.ToDoDB");
-// Environment.GetEnvironmentVariable("connection_string");
-// Console.WriteLine($"Connection String: {connectionString}");
+// var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings.ToDoDB");
 builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(connectionString,
-    new MySqlServerVersion(new Version(8, 0, 40))));
+    options.UseMySql(builder.Configuration.GetConnectionString("ConnectionStrings.ToDoDB"),
+                     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql")));
+
+// builder.Services.AddDbContext<ToDoDbContext>(options =>
+//     options.UseMySql(connectionString,
+//     new MySqlServerVersion(new Version(8, 0, 40))));
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-builder.Services.AddControllers();
+// builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCors(options =>
 {
