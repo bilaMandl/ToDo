@@ -106,6 +106,7 @@ app.MapGet("/", () => Results.Redirect("/swagger"));
 // Endpoints for login and registration
 app.MapPost("/login", (LoginModel loginModel, ToDoDbContext db) =>
 {
+    Console.WriteLine("start");
     var user = db.Users?.FirstOrDefault(u => u.UserName == loginModel.UserName && u.Password == loginModel.Password);
     if (user is not null)
     {
@@ -117,6 +118,7 @@ app.MapPost("/login", (LoginModel loginModel, ToDoDbContext db) =>
 
 app.MapPost("/register", (LoginModel loginModel, ToDoDbContext db) =>
 {
+        Console.WriteLine("start");
     var name = loginModel.UserName;
     var lastId = db.Users?.Max(u => u.Id) ?? 0;
     var newUser = new User { Id = lastId + 1, UserName = name, Password = loginModel.Password };
