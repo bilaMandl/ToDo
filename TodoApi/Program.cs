@@ -13,22 +13,24 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 
 var builder = WebApplication.CreateBuilder(args);
-var _configuration = builder.Configuration;
-
+// var _configuration = builder.Configuration;
+//1
 //connect to DB on cloud
 // var connectionString = Environment.GetEnvironmentVariable("connect-ToDB");
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
-//     options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
-                    // ServerVersion.Parse("8.0-mysql")));
+//     options.UseMySql(connectionString,
+//     new MySqlServerVersion(new Version(8, 0, 40))));
 
+// 3
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
                      new MySqlServerVersion(new Version(8, 0, 40)),
                      mysqlOptions => mysqlOptions.EnableRetryOnFailure()));
 
+//2
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
-//     options.UseMySql(connectionString,
-//     new MySqlServerVersion(new Version(8, 0, 40))));
+//     options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
+//                       ServerVersion.Parse("8.0-mysql")));
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
