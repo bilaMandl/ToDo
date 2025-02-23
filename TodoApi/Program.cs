@@ -66,6 +66,7 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+builder.Services.AddAuthorization();
 
 // הוספת Authentication
 builder.Services.AddAuthentication(options =>
