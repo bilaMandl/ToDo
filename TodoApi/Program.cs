@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 
 var builder = WebApplication.CreateBuilder(args);
-// var _configuration = builder.Configuration;
+var _configuration = builder.Configuration;
 //1
 //connect to DB on cloud
 // var connectionString = Environment.GetEnvironmentVariable("connect-ToDB");
@@ -23,7 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 3
 builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
+    options.UseMySql(_configuration.GetConnectionString("connect-ToDB"),
                      new MySqlServerVersion(new Version(8, 0, 40)),
                      mysqlOptions => mysqlOptions.EnableRetryOnFailure()));
 
