@@ -19,7 +19,9 @@ var _configuration = builder.Configuration;
 // var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings.ToDoDB");
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("ConnectionStrings.ToDoDB"),
-                    ServerVersion.Parse("8.0-mysql")));
+        new MySqlServerVersion(new Version(8, 0, 40))));
+
+                    // ServerVersion.Parse("8.0-mysql")));
 
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
 //     options.UseMySql(connectionString,
