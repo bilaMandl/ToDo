@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
+
 var builder = WebApplication.CreateBuilder(args);
 var _configuration = builder.Configuration;
 
@@ -18,7 +19,7 @@ var _configuration = builder.Configuration;
 // var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings.ToDoDB");
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("ConnectionStrings.ToDoDB"),
-                     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql")));
+                    ServerVersion.Parse("8.0-mysql")));
 
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
 //     options.UseMySql(connectionString,
