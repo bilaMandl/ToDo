@@ -16,15 +16,15 @@ var builder = WebApplication.CreateBuilder(args);
 var _configuration = builder.Configuration;
 
 //connect to DB on cloud
-// var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings.ToDoDB");
+// var connectionString = Environment.GetEnvironmentVariable("connect-ToDB");
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
-//     options.UseMySql(builder.Configuration.GetConnectionString("ConnectionStrings.ToDoDB"),
-//         new MySqlServerVersion(new Version(8, 0, 40))));
+//     options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
+                    // ServerVersion.Parse("8.0-mysql")));
+
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
                      new MySqlServerVersion(new Version(8, 0, 40)),
                      mysqlOptions => mysqlOptions.EnableRetryOnFailure()));
-                    // ServerVersion.Parse("8.0-mysql")));
 
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
 //     options.UseMySql(connectionString,
