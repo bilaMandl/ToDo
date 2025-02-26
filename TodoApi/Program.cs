@@ -19,15 +19,15 @@ var _configuration = builder.Configuration;
 //     options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB"), new MySqlServerVersion(new Version(8, 0, 21)))); // ודא שאתה משתמש בגרסה הנכונה
 //connect to DB on cloud from render server-site
 //1
-// var connectionString = Environment.GetEnvironmentVariable("connect-ToDB");
-// builder.Services.AddDbContext<ToDoDbContext>(options =>
-//     options.UseMySql(connectionString,
-//     new MySqlServerVersion(new Version(8, 0, 40))));
-// 3
+var connectionString = Environment.GetEnvironmentVariable("connect-ToDB");
 builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
-                     new MySqlServerVersion(new Version(8, 0, 40)),
-                     mysqlOptions => mysqlOptions.EnableRetryOnFailure()));
+    options.UseMySql(connectionString,
+    new MySqlServerVersion(new Version(8, 0, 40))));
+// 3
+// builder.Services.AddDbContext<ToDoDbContext>(options =>
+//     options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
+//                      new MySqlServerVersion(new Version(8, 0, 40)),
+//                      mysqlOptions => mysqlOptions.EnableRetryOnFailure()));
 //2
 //Server=bxhskhpf2zqlqz0cphw2-mysql.services.clever-cloud.com;Database=bxhskhpf2zqlqz0cphw2;User ID=ufei3enfoonqnquv;Password=Nm0Oku0nfJmnNlvfvYxI;SslMode=Preferred;
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
