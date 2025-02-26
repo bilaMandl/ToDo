@@ -25,7 +25,7 @@ var _configuration = builder.Configuration;
 //     new MySqlServerVersion(new Version(8, 0, 40))));
 // 3
 builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(_configuration.GetConnectionString("connect-ToDB"),
+    options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
                      new MySqlServerVersion(new Version(8, 0, 40)),
                      mysqlOptions => mysqlOptions.EnableRetryOnFailure()));
 //2
