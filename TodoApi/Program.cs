@@ -14,26 +14,25 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 var _configuration = builder.Configuration;
-//connection to DB cloud from appsettind=gs.json
+//connection to DB cloud from appsettings.json
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
 //     options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB"), new MySqlServerVersion(new Version(8, 0, 21)))); // ודא שאתה משתמש בגרסה הנכונה
-
+//connect to DB on cloud from render server-site
 //1
-//connect to DB on cloud
 // var connectionString = Environment.GetEnvironmentVariable("connect-ToDB");
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
 //     options.UseMySql(connectionString,
 //     new MySqlServerVersion(new Version(8, 0, 40))));
 // 3
-// builder.Services.AddDbContext<ToDoDbContext>(options =>
-//     options.UseMySql(_configuration.GetConnectionString("connect-ToDB"),
-//                      new MySqlServerVersion(new Version(8, 0, 40)),
-//                      mysqlOptions => mysqlOptions.EnableRetryOnFailure()));
+builder.Services.AddDbContext<ToDoDbContext>(options =>
+    options.UseMySql(_configuration.GetConnectionString("connect-ToDB"),
+                     new MySqlServerVersion(new Version(8, 0, 40)),
+                     mysqlOptions => mysqlOptions.EnableRetryOnFailure()));
 //2
 //Server=bxhskhpf2zqlqz0cphw2-mysql.services.clever-cloud.com;Database=bxhskhpf2zqlqz0cphw2;User ID=ufei3enfoonqnquv;Password=Nm0Oku0nfJmnNlvfvYxI;SslMode=Preferred;
-builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
-                      ServerVersion.Parse("8.0-mysql")));
+// builder.Services.AddDbContext<ToDoDbContext>(options =>
+//     options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
+//                       ServerVersion.Parse("8.0-mysql")));
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
