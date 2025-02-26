@@ -14,27 +14,29 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 var _configuration = builder.Configuration;
+//connection to DB cloud from appsettind=gs.json
+// builder.Services.AddDbContext<ToDoDbContext>(options =>
+//     options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB"), new MySqlServerVersion(new Version(8, 0, 21)))); // ודא שאתה משתמש בגרסה הנכונה
+
 //1
 //connect to DB on cloud
 // var connectionString = Environment.GetEnvironmentVariable("connect-ToDB");
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
 //     options.UseMySql(connectionString,
 //     new MySqlServerVersion(new Version(8, 0, 40))));
-
 // 3
-builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(_configuration.GetConnectionString("connect-ToDB"),
-                     new MySqlServerVersion(new Version(8, 0, 40)),
-                     mysqlOptions => mysqlOptions.EnableRetryOnFailure()));
-
-//2
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
-//     options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
-//                       ServerVersion.Parse("8.0-mysql")));
+//     options.UseMySql(_configuration.GetConnectionString("connect-ToDB"),
+//                      new MySqlServerVersion(new Version(8, 0, 40)),
+//                      mysqlOptions => mysqlOptions.EnableRetryOnFailure()));
+//2
+//Server=bxhskhpf2zqlqz0cphw2-mysql.services.clever-cloud.com;Database=bxhskhpf2zqlqz0cphw2;User ID=ufei3enfoonqnquv;Password=Nm0Oku0nfJmnNlvfvYxI;SslMode=Preferred;
+builder.Services.AddDbContext<ToDoDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("connect-ToDB"),
+                      ServerVersion.Parse("8.0-mysql")));
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-// builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCors(options =>
 {
@@ -125,15 +127,17 @@ app.MapPost("/login", (LoginModel loginModel, ToDoDbContext db) =>
 
 app.MapPost("/register", (LoginModel loginModel, ToDoDbContext db) =>
 {
-        Console.WriteLine("start");
+    Console.WriteLine("start");
     var name = loginModel.UserName;
-    var lastId = db.Users?.Max(u => u.Id) ?? 0;
+    // בדוק אם יש משתמשים לפני שמחשבים את lastId
+    var lastId = db.Users?.Any() == true ? db.Users.Max(u => u.Id) : 0;
     var newUser = new User { Id = lastId + 1, UserName = name, Password = loginModel.Password };
     db.Users?.Add(newUser);
     db.SaveChanges();
     var jwt = CreateJWT(newUser);
     return Results.Ok(jwt);
 });
+
 
 object CreateJWT(User user)
 {
