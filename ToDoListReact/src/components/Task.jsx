@@ -9,16 +9,16 @@ function Task() {
   async function getTodos() {
     try {
       const todos = await Service.getTasks();
-      if (todos) {
+      console.log('Response from server:', todos); // הוסף הדפסת קונסול
+      if (Array.isArray(todos)) {
         setTodos(todos);
-        console.log(todos.toString);
       } else {
         console.log('No todos received or received non-array:', todos);
       }
     } catch (error) {
       console.error('Error fetching todos:', error);
     }
-  }
+  }  
   // async function getTodos() {
   //     try {
   //         const todos = await Service.getTasks();
