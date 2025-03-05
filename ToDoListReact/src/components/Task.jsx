@@ -22,6 +22,7 @@ function Task() {
           const todos = await Service.getTasks();
           if (todos) { 
               setTodos(todos);
+              console.log(todos)
           } else {
               console.log('No todos received');
           }
