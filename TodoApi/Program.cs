@@ -159,7 +159,7 @@ object CreateJWT(User user)
 }
 
 // Endpoints for items
-app.MapGet("/items", [Authorize]  (ToDoDbContext db) =>  db.Items.ToListAsync());
+app.MapGet("/items", [Authorize] async (ToDoDbContext db) => await db.Items.ToListAsync());
 app.MapGet("/items/{id}", [Authorize] async (int id, ToDoDbContext db) =>
     await db.Items.FindAsync(id) is Item item
         ? Results.Ok(item)
