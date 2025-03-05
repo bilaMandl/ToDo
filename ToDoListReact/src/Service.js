@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import jwt_decode from "jwt-decode";
 
-const apiUrl =  process.env.REACT_APP_API_URL;
+const apiUrl = process.env.REACT_APP_API_URL;
 axios.defaults.baseURL = apiUrl;
 setAuthorizationBearer();
 
@@ -56,7 +56,6 @@ export default {
       throw err;
     }
   },
-
 
   addTask: async (name) => {
     console.log('addTask', name);
