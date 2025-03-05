@@ -46,7 +46,6 @@ export default {
     saveAccessToken(res.data);
   },
 
-
   getTasks: async () => {
     try {
       const result = await axios.get(`/items`);

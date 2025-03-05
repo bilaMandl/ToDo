@@ -6,32 +6,33 @@ function Task() {
   const [newTodo, setNewTodo] = useState("");
   const [todos, setTodos] = useState([]);
 
-  async function getTodos() {
-    try {
-      const todos = await Service.getTasks();
-      console.log('Response from server:', todos); // הוסף הדפסת קונסול
-      if (Array.isArray(todos)) {
-        setTodos(todos);
-      } else {
-        console.log('No todos received or received non-array:', todos);
-      }
-    } catch (error) {
-      console.error('Error fetching todos:', error);
-    }
-  }  
   // async function getTodos() {
-  //     try {
-  //         const todos = await Service.getTasks();
-  //         if (todos) { 
-  //             setTodos(todos);
-  //             console.log(todos);
-  //         } else {
-  //             console.log('No todos received');
-  //         }
-  //     } catch (error) {
-  //         console.error('Error fetching todos:', error);
+  //   try {
+  //     const todos = await Service.getTasks();
+  //     console.log('Response from server:', todos); // הוסף הדפסת קונסול
+  //     if (Array.isArray(todos)) {
+  //       setTodos(todos);
+  //     } else {
+  //       console.log('No todos received or received non-array:', todos);
   //     }
-  // }
+  //   } catch (error) {
+  //     console.error('Error fetching todos:', error);
+  //   }
+  // }  
+
+  async function getTodos() {
+      try {
+          const todos = await Service.getTasks();
+          if (todos) { 
+              setTodos(todos);
+              console.log(todos);
+          } else {
+              console.log('No todos received');
+          }
+      } catch (error) {
+          console.error('Error fetching todos:', error);
+      }
+  }
 
   async function createTodo(e) {
     e.preventDefault();
